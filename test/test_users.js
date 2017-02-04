@@ -10,11 +10,7 @@ var app = require('../app');
 
 describe('Users Page /', function () {
     
-    before(async function (done) {
-        await new Promise(function (resolve) {
-            console.log('initing...');
-            resolve({});
-        });
+    before(function (done) {
         console.log('inited!');
         done();
     });
