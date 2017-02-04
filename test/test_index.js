@@ -22,7 +22,7 @@ describe('Index Page /', function () {
     
     it('respond sucess', function (done) {
         this.timeout(15000);
-        request(app.listen())
+        request(app)
             .get('/')
             .set('Accept', 'application/*')
             .expect('Content-Type', /html/)
