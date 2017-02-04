@@ -1,22 +1,26 @@
-var request = require('supertest');
-var should = require('should');
+const request = require('supertest');
+const should = require('should');
 
 require('babel-core/register');
 require("babel-core").transform("code", {
     plugins: ["transform-runtime"]
 });
 
-var app = require('../app');
+const app = require('../app');
 
 describe('Users Page /', function () {
-    
+
     before(function (done) {
-        console.log('inited!');
-        done();
+        new Promise(function (resolve) {
+            console.log('inited!');
+            resolve({});
+        }).then(function () {
+            done();
+        });
     });
-    
+
     it('Users Home sucess', function (done) {
-        this.timeout(1000);
+        this.timeout(10000);
         request(app)
             .get('/users')
             .set('Accept', 'application/*')
@@ -27,7 +31,7 @@ describe('Users Page /', function () {
                 done();
             });
     });
-    
+
     it('Users List sucess', function (done) {
         this.timeout(1000);
         request(app)

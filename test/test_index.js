@@ -1,12 +1,12 @@
-var request = require('supertest');
-var should = require('should');
+const request = require('supertest');
+const should = require('should');
 
 require('babel-core/register');
 require("babel-core").transform("code", {
     plugins: ["transform-runtime"]
 });
 
-var app = require('../app');
+const app = require('../app');
 
 describe('Index Page /', function () {
     
