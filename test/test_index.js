@@ -11,24 +11,47 @@ var app = require('../app');
 describe('Index Page /', function () {
     
     before(function (done) {
-        new Promise(function (resolve) {
-            console.log('initing...');
-            resolve({});
-        }).then(function (data) {
-            console.log('inited!');
-            done();
-        });
+        //init
+        done();
     });
     
-    it('respond sucess', function (done) {
-        this.timeout(15000);
+    it('主页', function (done) {
+        this.timeout(1000);
         request(app)
             .get('/')
             .set('Accept', 'application/*')
             .expect('Content-Type', /html/)
             .end(function (err, res) {
                 res.status.should.equal(200);
-                console.log(res.text);
+                //console.log(res.text);
+                res.text.should.containEql('测试系统');
+                res.text.should.not.containEql('Error').and.not.containEql('404');
+                done();
+            });
+    });
+    
+    it('分类', function (done) {
+        this.timeout(1000);
+        request(app)
+            .get('/category')
+            .set('Accept', 'application/*')
+            .expect('Content-Type', /html/)
+            .end(function (err, res) {
+                res.status.should.equal(200);
+                //console.log(res.text);
+                done();
+            });
+    });
+    
+    it('分类JSON', function (done) {
+        this.timeout(1000);
+        request(app)
+            .get('/category/json')
+            .set('Accept', 'application/*')
+            .expect('Content-Type', /json/)
+            .end(function (err, res) {
+                res.status.should.equal(200);
+                //console.log(res.text);
                 done();
             });
     });

@@ -1,13 +1,31 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+
+const config = require('../config');
 
 /* GET home page. */
 router.get('/', async function (req, res, next) {
-    await new Promise(function (resolve) {
-        console.log('Promise ok!');
-        resolve({});
+    let [rows, fields, error] = await config.mysql2Pool
+        .query('select * from test where id>?', [1])
+        .catch(function (err) {
+        return [null, null, err];
     });
-    res.render('index', {title: 'Express'});
+    if (error) {
+        //错误处理
+        console.log(error.toString());
+        next();
+        return;
+    }
+    
+    res.render('index', {title: '测试系统', rows:rows});
+});
+
+router.get('/category', async function (req, res, next) {
+    res.render('index', {title: '测试系统'});
+});
+
+router.get('/category/json', async function (req, res, next) {
+    res.json({title: '测试系统'});
 });
 
 module.exports = router;
