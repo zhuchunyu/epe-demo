@@ -38,7 +38,6 @@ describe('Index Page /', function () {
             .expect('Content-Type', /html/)
             .end(function (err, res) {
                 res.status.should.equal(200);
-                //console.log(res.text);
                 done();
             });
     });
@@ -51,7 +50,7 @@ describe('Index Page /', function () {
             .expect('Content-Type', /json/)
             .end(function (err, res) {
                 res.status.should.equal(200);
-                //console.log(res.text);
+                res.body.title.should.equal('测试系统');
                 done();
             });
     });
