@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 nunjucks.configure('views', {
     autoescape: true,
-    noCache: false,
+    noCache: true,
     trimBlocks: true,
     lstripBlocks: true,
     express: app
