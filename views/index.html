@@ -4,8 +4,11 @@
 {% endblock %}
 
 {% block body %}
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+    <h1>{{title}}</h1>
+    <p>Welcome to {{title}}</p>
+    {% for item in [1,2,3] %}
+        <p>{{ item }}.{{ loop.index }}</p>
+    {% endfor %}
 {% endblock %}
 
 {% block scripts %}
