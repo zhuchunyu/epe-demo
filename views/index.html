@@ -1,17 +1,17 @@
 {% extends "layouts.html" %}
 
+{% block stylesheets %}
+{% endblock %}
+
 {% block body %}
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
 {% endblock %}
 
-{% block stylesheets %}
-{% endblock %}
-
 {% block scripts %}
-    <script>
-        (function () {
-            console.log('one');
-        })();
-    </script>
+<script>
+    (function () {
+        console.log('one');
+    })();
+</script>
 {% endblock %}

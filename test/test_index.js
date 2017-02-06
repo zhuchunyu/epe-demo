@@ -50,7 +50,20 @@ describe('Index Page /', function () {
             .expect('Content-Type', /json/)
             .end(function (err, res) {
                 res.status.should.equal(200);
-                res.body.title.should.equal('测试系统');
+                console.log(res.body.status.should.equal(true));
+                done();
+            });
+    });
+    
+    it('请求JSON', function (done) {
+        this.timeout(5000);
+        request(app)
+            .get('/request')
+            .set('Accept', 'application/*')
+            .expect('Content-Type', /json/)
+            .end(function (err, res) {
+                res.status.should.equal(200);
+                console.log(res.body.status.should.equal(false));
                 done();
             });
     });
