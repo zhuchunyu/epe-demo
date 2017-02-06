@@ -17,10 +17,13 @@ router.get('/', async function (req, res, next) {
         return;
     }
     
+    req.session.hello = "test hello";
+    
     res.render('index', {title: '测试系统', rows:rows});
 });
 
 router.get('/category', async function (req, res, next) {
+    console.log('session:', req.session.hello);
     res.render('index', {title: '测试系统'});
 });
 

@@ -1,27 +1,23 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 const nunjucks = require('nunjucks');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
+const session = require('express-session');
+const RedisStore = require('connect-redis')(session);
 
-var app = express();
+const index = require('./routes/index');
+const users = require('./routes/users');
 
-nunjucks.configure('views', {
-    autoescape: true,
-    noCache:true,
-    express: app
+const app = express();
+
+app.use(function (req, res, next) {
+    console.log('path:', req.url);
+    next();
 });
-//nunjucks.configure('/views');
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'html');
-//app.set('view engine', 'hbs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -36,6 +32,33 @@ app.use(require('node-sass-middleware')({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+nunjucks.configure('views', {
+    autoescape: true,
+    noCache:true,
+    express: app
+});
+//nunjucks.configure('/views');
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'html');
+//app.set('view engine', 'hbs');
+
+app.use(session({
+    store: new RedisStore({host:'172.19.3.65', port:6379, db:7}),
+    secret: 'qwerdf',
+    name: 'session.id',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge:10000 }
+}));
+
+app.use(function(req, res, next){
+    req.session._garbage = new Date();
+    req.session.touch();
+    next();
+});
 
 app.use('/', index);
 app.use('/users', users);
