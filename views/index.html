@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>{{title}}</title>
-	<link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-<body>
-	<h1>{{title}}</h1>
-	<h1>{{title}}</h1>
-</body>
-</html>
+{% extends "layouts.html" %}
+
+{% block body %}
+<h1>{{title}}</h1>
+<p>Welcome to {{title}}</p>
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

@@ -14,11 +14,6 @@ const users = require('./routes/users');
 
 const app = express();
 
-app.use(function (req, res, next) {
-    console.log('path:', req.url);
-    next();
-});
-
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -51,9 +46,10 @@ app.use(session({
     name: 'session.id',
     resave: false,
     saveUninitialized: true,
-    cookie: { maxAge:10000 }
+    cookie: { maxAge:30*60*1000 }
 }));
 
+//刷新session过期时间
 app.use(function(req, res, next){
     req.session._garbage = new Date();
     req.session.touch();
