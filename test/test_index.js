@@ -24,7 +24,7 @@ describe('Index Page /', function () {
             .end(function (err, res) {
                 res.status.should.equal(200);
                 //console.log(res.text);
-                res.text.should.containEql('测试系统');
+                res.text.should.containEql('DEMO');
                 res.text.should.not.containEql('Error').and.not.containEql('404');
                 done();
             });

@@ -20,12 +20,12 @@ router.get('/', async function (req, res, next) {
     
     req.session.user = {status:'logined'};
     
-    res.render('index', {title: '测试系统', rows:rows});
+    res.render('index', {title: 'DEMO', rows:rows});
 });
 
 router.get('/category', async function (req, res, next) {
     console.log('session:', req.session.user);
-    res.render('index', {title: '测试系统'});
+    res.render('index', {title: 'DEMO'});
 });
 
 router.get('/category/json', async function (req, res, next) {
