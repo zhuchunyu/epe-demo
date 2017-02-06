@@ -12,7 +12,7 @@ describe('Users Page /', function () {
 
     before(function (done) {
         new Promise(function (resolve) {
-            console.log('inited!');
+            console.log('initing...');
             resolve({});
         }).then(function () {
             done();
@@ -20,14 +20,13 @@ describe('Users Page /', function () {
     });
 
     it('Users Home sucess', function (done) {
-        this.timeout(10000);
+        this.timeout(1000);
         request(app)
             .get('/users')
             .set('Accept', 'application/*')
             .expect('Content-Type', /text/)
             .end(function (err, res) {
                 res.status.should.equal(200);
-                console.log(res.text);
                 done();
             });
     });
@@ -40,7 +39,6 @@ describe('Users Page /', function () {
             .expect('Content-Type', /json/)
             .end(function (err, res) {
                 res.status.should.equal(200);
-                console.log(res.body);
                 should(err).not.be.ok();
                 should(res.body).be.ok();
                 should(res.body.status).be.ok();
