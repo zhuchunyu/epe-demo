@@ -8,3 +8,6 @@ require("babel-core").transform("code", {
 //https://www.zhihu.com/question/37379084       tmall
 //https://segmentfault.com/a/1190000004505747   webpack
 //https://github.com/kenanpengyou/express-webpack-full-live-reload-example
+//http://mt.sohu.com/20170120/n479264319.shtml
+//http://www.w2bc.com/Article/50764  webpack demo
+//https://github.com/yiifaa/yii-template   webpack静态文件
