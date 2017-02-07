@@ -56,7 +56,7 @@ describe('Index Page /', function () {
     });
     
     it('请求JSON', function (done) {
-        this.timeout(1000);
+        this.timeout(10000);
         request(app)
             .get('/request')
             .set('Accept', 'application/*')
