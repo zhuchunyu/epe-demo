@@ -9,5 +9,10 @@ require("babel-core").transform("code", {
 //https://segmentfault.com/a/1190000004505747   webpack
 //https://github.com/kenanpengyou/express-webpack-full-live-reload-example
 //http://mt.sohu.com/20170120/n479264319.shtml
-//http://www.w2bc.com/Article/50764  webpack demo
+//http://www.w2bc.com/Article/50764  webpack demo cdn
 //https://github.com/yiifaa/yii-template   webpack静态文件
+
+//https://github.com/eteplus/vue-sui-demo vue+webpack-cdn
+//npm install -g cnpm --registry=http://registry.npm.taobao.org
+
+//https://segmentfault.com/a/1190000002551952
