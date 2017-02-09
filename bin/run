@@ -16,3 +16,5 @@ require("babel-core").transform("code", {
 //npm install -g cnpm --registry=http://registry.npm.taobao.org
 
 //https://segmentfault.com/a/1190000002551952
+
+//https://webpack.github.io/docs/configuration.html  webpack configure
