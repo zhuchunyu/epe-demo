@@ -18,3 +18,5 @@ require("babel-core").transform("code", {
 //https://segmentfault.com/a/1190000002551952
 
 //https://webpack.github.io/docs/configuration.html  webpack configure
+
+//https://github.com/okoala/vue-fis3    vue集成后端
