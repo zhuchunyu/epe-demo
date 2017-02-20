@@ -51,4 +51,14 @@ router.get('/request', async function (req, res, next) {
     res.json(data);
 });
 
+router.get('/map', async function (req, res, next) {
+    res.render('map');
+});
+
+router.get('/debug', async function (req, res, next) {
+    var hello = 'helloworld';
+    var world = 'helloworld';
+    res.json({hello:hello, world:world});
+});
+
 module.exports = router;
