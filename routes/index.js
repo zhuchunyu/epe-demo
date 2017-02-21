@@ -61,4 +61,9 @@ router.get('/debug', async function (req, res, next) {
     res.json({hello:hello, world:world});
 });
 
+router.post('/post', async function (req, res, next) {
+    console.log(req.body);
+    res.json({});
+});
+
 module.exports = router;
