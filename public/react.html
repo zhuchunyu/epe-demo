@@ -1,0 +1,41 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Hello React!</title>
+    <script src="./assets/react/react.js"></script>
+    <script src="./assets/react/react-dom.js"></script>
+    <script src="./assets/babel-core/browser.min.js"></script>
+    <script src="./assets/jquery.min.js"></script>
+    <script src="./assets/remarkable.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/babel">
+    var HelloMessage = React.createClass({
+        render: function () {
+            return <h1>Hello {this.props.name}</h1>;
+        }
+    });
+    var names = ['Alice', 'Emily', 'Kate'];
+    var CommentBox = React.createClass({
+        render: function () {
+            return (
+                <div className="commentBox">
+                    Hello, world! I am a CommentBox. {this.props.author}
+                    {
+                        names.map(function (name) {
+                            return <div>Hello, {name}!</div>
+                        })
+                    }
+                    <HelloMessage name="John"/>
+                </div>
+            );
+        }
+    });
+    ReactDOM.render(
+        <CommentBox author="Jack"/>,
+        document.getElementById('example')
+    );
+</script>
+</body>
+</html>

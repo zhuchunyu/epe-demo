@@ -42,7 +42,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 //app.set('view engine', 'hbs');
 
-app.use(session({
+/*app.use(session({
     store: new RedisStore({host:'172.19.3.65', port:6379, db:7}),
     secret: 'qwerdf',
     name: 'session.id',
@@ -56,7 +56,7 @@ app.use(function(req, res, next){
     req.session._garbage = new Date();
     req.session.touch();
     next();
-});
+});*/
 
 app.use('/', index);
 app.use('/users', users);
